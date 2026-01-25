@@ -15,3 +15,11 @@ services:
     command: bash
     stdin_open: true
     tty: true
+
+  test:
+    build: .
+    volumes:
+      - .:/app
+    command: bundle exec rspec
+    environment:
+      - RACK_ENV=test
