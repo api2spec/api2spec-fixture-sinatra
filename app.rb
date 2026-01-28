@@ -89,3 +89,10 @@ post '/posts' do
   status 201
   data.to_json
 end
+
+delete '/posts/:id' do
+  post = POSTS.find { |p| p[:id] == params[:id].to_i }
+  halt 404, { error: 'Post not found' }.to_json unless post
+  status 204
+  ''
+end

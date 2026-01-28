@@ -63,4 +63,26 @@ RSpec.describe "Posts API" do
       end
     end
   end
+
+  describe "DELETE /posts/:id" do
+    context "when post exists" do
+      it "deletes the post and returns 204" do
+        delete '/posts/1'
+
+        expect(last_response.status).to eq(204)
+        expect(last_response.body).to be_empty
+      end
+    end
+
+    context "when post does not exist" do
+      it "returns 404 not found" do
+        delete '/posts/999'
+
+        expect(last_response.status).to eq(404)
+
+        body = JSON.parse(last_response.body)
+        expect(body['error']).to eq('Post not found')
+      end
+    end
+  end
 end
