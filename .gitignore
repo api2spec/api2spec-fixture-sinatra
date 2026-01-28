@@ -1,5 +1,18 @@
+# Bundle/gems
 .bundle/
-vendor/
+/vendor/
+*.gem
+
+# Editor/IDE
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+
+# Environment
+.env
+*.log
 
 # Claude Code
 .claude/
